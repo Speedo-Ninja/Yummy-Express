@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help and Support - Yummy Express</title>
+    <!-- Google Fonts CDN for Nosifer font -->
+    <link href="https://fonts.googleapis.com/css2?family=Nosifer&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome CDN for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(120deg, #f093fb, #f5576c);
+            color: white;
+            overflow-x: hidden;
+        }
+        header {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            text-align: center;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        header h1 {
+            font-family: 'Nosifer', cursive; /* Applying Nosifer font */
+            font-size: 6rem;
+            margin: 0;
+        }
+        
+        /* New styles for Profile, Cart, and Favourite buttons */
+        .action-buttons {
+            position: absolute;
+            top: 30px;
+            right: 20px;
+            display: flex;
+            gap: 20px;
+        }
+        .action-buttons button {
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .tooltip {
+            display: none;
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+        }
+
+        .action-buttons button:hover .tooltip {
+            display: block;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-around;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 10px 0;
+            position: sticky;
+            top: 80px;
+            z-index: 100;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 10px;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: #3498db;
+            border-radius: 5px;
+        }
+        nav a i {
+            margin-right: 8px;
+        }
+
+        .help-section {
+            text-align: center;
+            margin: 20px 0;
+            animation: fadeIn 1s ease;
+        }
+        .help-section h2 {
+            font-size: 2.5rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        }
+        .help-section p {
+            font-size: 1.2rem;
+            color: #ddd;
+            margin-top: 10px;
+        }
+
+        .faq-section {
+            margin: 30px 0;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+        }
+
+        .faq-section h3 {
+            font-size: 2rem;
+            color: white;
+        }
+
+        .faq-item {
+            margin: 10px 0;
+            color: white;
+        }
+
+        .faq-item p {
+            font-size: 1.1rem;
+            color: #bbb;
+        }
+
+        .contact-section {
+            margin: 30px 0;
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+        }
+
+        .contact-section h3 {
+            font-size: 2rem;
+            color: white;
+        }
+
+        .contact-info {
+            margin-top: 10px;
+            font-size: 1.2rem;
+            color: #ddd;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Yummy Express</h1>
+        <div class="action-buttons">
+            <button id="profile-btn">
+                <i class="fas fa-user"></i>
+                <span class="tooltip">Profile</span>
+            </button>
+            <button id="favourite-btn">
+                <i class="fas fa-heart"></i>
+                <span class="tooltip">Favourite</span>
+            </button>
+            <button id="cart-btn">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="tooltip">Cart</span>
+            </button>
+        </div>
+    </header>
+
+    <nav>
+        <a href="(01) .  Front Page.html"><i class="fas fa-home"></i>Home</a>
+        <a href="(05) Offer.html"><i class="fas fa-tag"></i>Offers</a>
+        <a href="Login Page.html"><i class="fas fa-sign-in-alt"></i>Sign In</a>
+        <a href="(08) Help and Support.html"><i class="fas fa-question-circle"></i>Help</a>
+    </nav>
+
+    <!-- Help Section -->
+    <div class="help-section">
+        <h2>Need Assistance? We Are Here to Help!</h2>
+        <p>Browse through our FAQs, or contact our support team for any further queries.</p>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="faq-section">
+        <h3>Frequently Asked Questions</h3>
+
+        <div class="faq-item">
+            <p><strong>1. How can I place an order?</strong></p>
+            <p>To place an order, browse our menu, select your favorite dishes, and add them to your cart. Once you’re ready, proceed to checkout and enter your delivery details.</p>
+        </div>
+
+        <div class="faq-item">
+            <p><strong>2. What payment methods do you accept?</strong></p>
+            <p>We mostly prefer UPI Transaction at the time of Food Delivery. You can also pay cash on delivery depending on your location.</p>
+        </div>
+
+        <div class="faq-item">
+            <p><strong>3. How can I track my order?</strong></p>
+            <p>You can track your order status directly through your account or by clicking the 'Track Order' button after checkout.</p>
+        </div>
+
+        <div class="faq-item">
+            <p><strong>4. Can I change my order after it's placed?</strong></p>
+            <p>Once an order is placed, it cannot be modified. However, you can cancel it within 15 minutes and place a new one , But remember doing multiple Cancelation order can harm your account Credit of Response.</p>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="contact-section">
+        <h3>Contact Our Support Team</h3>
+        <p>If you have any additional questions or need further assistance, feel free to reach out to us:</p>
+
+        <div class="contact-info">
+            <p>Email: <a href="mailto:support@yummyexpress.com">support@yummyexpress.com</a></p>
+            <p>Phone: +91 9229964355</p>
+            <p> Make SMS , Whatsapp , Call  On given Number Our executive contact you Immediately !!!</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Yummy Express. All rights reserved.</p>
+    </footer>
+</body>
+</html>
