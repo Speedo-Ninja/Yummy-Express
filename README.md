@@ -5,6 +5,9 @@ Website of Online Food Delivery
 🍽️ Yummy Express – 
 Is a fully functional online food delivery website built using HTML, CSS, and JavaScript. The project simulates a real-world food ordering platform where users can explore various restaurants, view menus, customize their orders based on portion sizes, and get real-time feedback on their selections.
 
+
+User can surf wewbsite directly from NETLIFY LINK :  "  https://yummyexpress.netlify.app/   "
+
 This project is designed to give users a modern and engaging food delivery experience with intuitive navigation and dynamic UI interactions.
 
 
