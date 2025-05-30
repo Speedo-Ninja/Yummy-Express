@@ -1,0 +1,947 @@
+    <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yummy Express</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Yummy Express - Your favorite meals, delivered fresh! Explore a wide variety of dishes and restaurants.">
+    <meta name="keywords" content="food delivery, yummy express, meals, restaurants, online food order, fresh food">
+    <meta name="author" content="Rohan">
+    <meta name="robots" content="index, follow">
+
+    <!-- Favicon -->
+    <link rel="icon" href="LOGO.png" type="image/png">
+
+    <!-- Structured Data JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "Yummy Express",
+      "image": "LOGO.png",
+      "description": "Your favorite meals, delivered fresh!",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "123 Food Street",
+        "addressLocality": "City",
+        "addressRegion": "State",
+        "postalCode": "12345",
+        "addressCountry": "Country"
+      },
+      "telephone": "+1234567890",
+      "url": "http://www.yummyexpress.com"
+    }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Nosifer&display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(120deg, #f093fb, #f5576c);
+            background-size: 200% 200%;
+            animation: gradientAnimation 5s ease infinite;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background: #ff6347;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            padding: 10px 0;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar .navbar-brand {
+            font-size: 1.8rem;
+            font-family: 'Nosifer', cursive;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .navbar .navbar-nav .nav-link {
+            color: white;
+            font-size: 1.1rem;
+            margin-left: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar .navbar-nav .nav-link:hover {
+            color: #f5576c;
+        }
+
+        /* Navbar Responsive */
+        @media (max-width: 768px) {
+            .navbar .navbar-nav .nav-link {
+                font-size: 1rem;
+            }
+        }
+
+        /* Header Section */
+        header {
+            position: relative;
+            background: linear-gradient(135deg, #ff6347, #f093fb);
+            color: white;
+            text-align: center;
+            padding: 60px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        header .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        header .logo-container img.logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        header .logo-container img.logo:hover {
+            transform: scale(1.1);
+        }
+
+        header .brand-name h1 {
+            font-family: 'Nosifer', cursive;
+            font-size: 3.5rem;
+            margin: 10px 0;
+            letter-spacing: 2px;
+            color: #111111;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3);
+            animation: slideIn 1.5s ease-out;
+        }
+
+        header .brand-name h1 span {
+            color: #f5576c;
+        }
+        header .brand-name h1 span.yummy-color {
+            color: #072217; /* very dark green */
+        }
+        header .brand-name h1 span.express-color {
+            color: #062819; /* very dark green */
+        }
+
+        header .brand-name p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-top: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        header .header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: -1;
+            border-radius: 10px;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Search Bar */
+        .search-container {
+            margin-top: 20px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .search-box {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-box input[type="text"] {
+            width: 100%;
+            padding: 12px 45px 12px 15px;
+            border-radius: 25px;
+            border: none;
+            font-size: 1rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .search-box .fa-search {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #aaa;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        /* Explore Dishes Section */
+        .explore-section {
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .explore-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            font-weight: 700;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        .dishes-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding-bottom: 10px;
+            scroll-behavior: smooth;
+        }
+
+        .dishes-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .dishes-container::-webkit-scrollbar-thumb {
+            background: #f5576c;
+            border-radius: 4px;
+        }
+
+        .dish-card {
+            flex: 0 0 auto;
+            background: #ff6347;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            width: 220px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+        }
+
+        .dish-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .dish-image {
+            width: 100%;
+            height: 140px;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            object-fit: cover;
+        }
+
+        .dish-info {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .dish-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .dish-details {
+            font-size: 0.9rem;
+            flex-grow: 1;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        .dish-price {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #f093fb;
+        }
+
+        /* Explore Dishes by Category Section */
+        #category-section {
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-align: center;
+        }
+
+        .category-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 110px;
+            height: 110px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .category-btn i {
+            font-size: 2.5rem;
+            margin-bottom: 8px;
+        }
+
+        /* Icon circle styling for spherical icons */
+        .icon-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: radial-gradient(circle at center, #ffffff, #d1d1d1);
+            box-shadow: 4px 4px 8px #b0b0b0, -4px -4px 8px #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .icon-circle:hover {
+            background: radial-gradient(circle at center, #f5576c, #f093fb);
+            box-shadow: 4px 4px 12px #d94a5a, -4px -4px 12px #f4a1b1;
+        }
+
+        .icon-circle i {
+            color: #ff6347;
+            font-size: 3rem;
+            transition: color 0.3s ease;
+        }
+
+        .icon-circle:hover i {
+            color: white;
+        }
+
+        .category-btn:hover,
+        .category-btn:focus {
+            background-color: #f5576c;
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        .social-icons {
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 2rem;
+            margin: 0 15px;
+            text-decoration: none;
+            transition: color 0.4s ease;
+        }
+
+        .social-icons a:hover {
+            color: #3498db;
+        }
+
+        /* Floating Contact Button */
+        .contact-btn {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            background-color: #ff6347;
+            color: white;
+            font-size: 1.5rem;
+            padding: 15px;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            transform: scale(1.1);
+            background-color: #f093fb;
+        }
+
+        /* Media Queries for Mobile */
+        @media (max-width: 768px) {
+            header .brand-name h1 {
+                font-size: 2.8rem;
+            }
+
+            .dish-card {
+                width: 180px;
+            }
+
+            .category-btn {
+                width: 90px;
+                height: 90px;
+                font-size: 0.9rem;
+            }
+
+            .category-btn i {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header .brand-name h1 {
+                font-size: 2.5rem;
+            }
+
+            .dish-card {
+                width: 140px;
+            }
+
+            .dish-name {
+                font-size: 1rem;
+            }
+
+            .dish-details {
+                font-size: 0.8rem;
+            }
+
+            .dish-price {
+                font-size: 1rem;
+            }
+
+            .category-btn {
+                width: 80px;
+                height: 80px;
+                font-size: 0.8rem;
+            }
+
+            .category-btn i {
+                font-size: 1.8rem;
+            }
+        }
+            .dish-badge {
+                display: inline-block;
+                font-size: 0.6rem;
+                font-weight: 700;
+                padding: 2px 6px;
+                border-radius: 10px;
+                margin-left: 6px;
+                vertical-align: middle;
+                color: white;
+                text-transform: uppercase;
+                font-family: Arial, sans-serif;
+            }
+            .dish-badge.hot {
+                background-color: #e74c3c;
+            }
+            .dish-badge.trending {
+                background-color: #f39c12;
+            }
+            .dish-badge.new {
+                background-color: #27ae60;
+            }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">Yummy Express</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="Home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="(02) Favourite menu.html">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="(07) About Us.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="(08) Help and Support.html">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header>
+        <div class="logo-container">
+            <img src="LOGO.png" alt="New Logo" class="logo" />
+            <div class="brand-name">
+                <h1>
+                    <span class="yummy-color">Yummy</span> <span class="express-color">Express</span>
+                </h1>
+                <p>Your favorite meals, delivered fresh!</p>
+            </div>
+        </div>
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" placeholder="Search restaurants, food menus, etc." aria-label="Search" />
+                <i class="fas fa-search"></i>
+            </div>
+        </div>
+        <div class="header-overlay"></div>
+    </header>
+
+    <!-- Explore Dishes Section -->
+    <section class="explore-section">
+        <h2>Explore Dishes from Different Restaurants</h2>
+        <div class="dishes-container" tabindex="0" aria-label="Explore dishes horizontally scrollable">
+            <a href="cheeseburger.html" class="dish-card" role="group" aria-label="Dish: Dosa">
+                <img src="IMAGES/Dosa.jpg" alt="Dosa" class="dish-image" />
+                <div class="dish-info">
+                    <div class="dish-name">Dosa</div>
+                </div>
+            </a>
+            <a href="sushi-platter.html" class="dish-card" role="group" aria-label="Dish: Chowmin">
+                <img src="IMAGES/Chowmin.jpg" alt="Chowmin" class="dish-image" />
+                <div class="dish-info">
+                    <div class="dish-name">Chowmin <span class="dish-badge trending">TRENDING</span></div>
+                </div>
+            </a>
+            <a href="caesar-salad.html" class="dish-card" role="group" aria-label="Dish: Sweets">
+                <img src="IMAGES/Rasgulla.jpg" alt="Sweets" class="dish-image" />
+                <div class="dish-info">
+                    <div class="dish-name">Sweets <span class="dish-badge new">NEW</span></div>
+                </div>
+            </a>
+            <a href="pad-thai.html" class="dish-card" role="group" aria-label="Dish: Pizza">
+                <img src="IMAGES/Pizza.jpg" alt="Pizza" class="dish-image" />
+                <div class="dish-info">
+                    <div class="dish-name">Pizza</div>
+                </div>
+            </a>
+            <a href="a.Cake.html" class="dish-card" role="group" aria-label="Dish: Various Cakes">
+                <img src="IMAGES/Cake.jpg" alt="Various Cakes" class="dish-image" />
+                <div class="dish-info">
+                    <div class="dish-name">Various Cakes <span class="dish-badge hot">HOT</span></div>
+                </div>
+            </a>
+            <a href="chocolate-cake.html" class="dish-card" role="group" aria-label="Dish: Chicken ">
+                <img src="IMAGES/Chicken Curry.jpg" alt="Chicken" class="dish-image" />
+                <div class="dish-info">
+                    <div class="dish-name">Chicken <span class="dish-badge hot">HOT</span></div>
+                </div>
+            </a>
+            <a href="tacos.html" class="dish-card" role="group" aria-label="Dish: Ice Cream">
+                <img src="IMAGES/Ice Cream.jpg" alt="Ice Cream" class="dish-image" />
+                <div class="dish-info">
+                    <div class="dish-name">Ice Cream</div>
+                </div>
+            </a>
+            <a href="e.Other.html" class="dish-card" role="group" aria-label="Dish: More Categories">
+                <div class="dish-info" style="display:flex; justify-content:center; align-items:center; height:140px; font-size:3rem; font-weight:bold; color:#f093fb;">
+                    +
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Explore Dishes by Category Section -->
+    <section class="explore-section" id="category-section">
+        <h2>Explore Dishes by Category</h2>
+        <div class="category-icons" role="tablist" aria-label="Dish categories">
+<a href="b.Fast Food.html" class="category-btn" role="tab" aria-selected="false" aria-controls="fastfood-items" id="fastfood-tab">
+    <div class="icon-circle">
+        <i class="fas fa-hamburger"></i>
+    </div>
+    Fast Food
+</a>
+<a href="d.Veg Food.html" class="category-btn" role="tab" aria-selected="false" aria-controls="veg-items" id="veg-tab">
+    <div class="icon-circle">
+        <i class="fas fa-leaf"></i>
+    </div>
+    Veg Food
+</a>
+<a href="c.Non Veg Food.html" class="category-btn" role="tab" aria-selected="false" aria-controls="nonveg-items" id="nonveg-tab">
+    <div class="icon-circle">
+        <i class="fas fa-bacon"></i>
+    </div>
+    Non Veg Food
+</a>
+<a href="a.Cake.html" class="category-btn" role="tab" aria-selected="false" aria-controls="cake-items" id="cake-tab">
+    <div class="icon-circle">
+        <i class="fas fa-birthday-cake"></i>
+    </div>
+    Cake
+</a>
+<a href="e.Other.html" class="category-btn" role="tab" aria-selected="false" aria-controls="other-items" id="other-tab">
+    <div class="icon-circle">
+        <i class="fas fa-utensils"></i>
+    </div>
+    Other
+</a>
+        </div>
+    </section>
+    
+    <!-- We Offers Section -->
+<section class="we-offers-section">
+  <h2 class="section-title">We Offers</h2>
+
+  <!-- Horizontal Scrolling Image Carousel -->
+  <div class="carousel-container">
+    <div class="carousel-track">
+      <!-- Replace src with your image URLs -->
+      <img src="IMAGES/Veg Thali.jpg" alt="Offer 1">
+      <img src="IMAGES/Samosa.jpg" alt="Offer 2">
+      <img src="IMAGES/Pakora.jpg" alt="Offer 3">
+      <img src="IMAGES/Kheer .png" alt="Offer 4">
+      <img src="IMAGES/Pasta.jpg" alt="Offer 5">
+      <img src="IMAGES/fried momos.jpg" alt="Offer 6">
+      <img src="IMAGES/Cake.jpg" alt="Offer 7">
+      <img src="IMAGES/Ice Cream.jpg" alt="Offer 8">
+      <img src="IMAGES/soup.jpg" alt="Offer 9">
+      <img src="IMAGES/sPRING Roll.jpg" alt="Offer 10">
+    </div>
+  </div>
+
+  <!-- Company Note -->
+  <p class="company-note">
+    At Yummy Express, we’re committed to delivering your favorite meals quickly and affordably. Our wide range of dishes, secure packaging, and reliable service make us your trusted food delivery partner. Taste the difference with every bite.
+  </p>
+</section>
+
+<!-- Styles for We Offers Section -->
+<style>
+  .we-offers-section {
+    padding: 40px 20px;
+    background: linear-gradient(120deg, #f093fb, #f5576c);
+    border-radius: 10px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+
+  .section-title {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #4c2c69; /* Matches your site's primary color */
+  }
+
+  .carousel-container {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+  }
+
+  .carousel-track {
+    display: flex;
+    width: calc(200px * 20); /* image width x total items x 2 for seamless scroll */
+    animation: scroll 30s linear infinite;
+  }
+
+  .carousel-track img {
+    width: 200px;
+    height: 120px;
+    margin: 0 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+
+  @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .company-note {
+    max-width: 800px;
+    margin: 30px auto 0;
+    font-size: 1.1em;
+    text-align: center;
+    color: #555;
+    line-height: 1.6;
+  }
+</style>
+
+
+    <!-- Explore Dishes from Popular Restaurants Section -->
+    <section class="explore-section" id="popular-restaurants-section">
+        <h2>Explore Dishes from Popular Restaurants</h2>
+        <div class="restaurants-container" tabindex="0" aria-label="Explore popular restaurants horizontally scrollable" style="display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 20px; padding-bottom: 10px; scroll-behavior: smooth; max-width: 100%;">
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+                <div style="display: flex; gap: 20px;">
+                    <a href="Hunger's Cave.html" class="restaurant-card oval-restaurant-card" role="group" aria-label="Restaurant: Hunger's Cave">
+                        <img src="IMAGES/Humgers cave logo.png" alt="Hunger's Cave" class="oval-restaurant-image" />
+                        <div class="oval-restaurant-info">
+                            <div class="oval-restaurant-name">Hunger's Cave</div>
+                            <div class="oval-restaurant-rating" aria-label="4.5 stars" role="img">⭐️⭐️⭐️⭐️⭐️ 4.5</div>
+                        </div>
+                    </a>
+                    <a href="One Bite.html" class="restaurant-card oval-restaurant-card" role="group" aria-label="Restaurant: One Bite">
+                        <img src="IMAGES/One Bite.png" alt="One Bite" class="oval-restaurant-image" />
+                        <div class="oval-restaurant-info">
+                            <div class="oval-restaurant-name">One Bite</div>
+                            <div class="oval-restaurant-rating" aria-label="4.7 stars" role="img">⭐️⭐️⭐️⭐️⭐️ 4.7</div>
+                        </div>
+                    </a>
+                    <a href="Shiv Guru Dhosa.html" class="restaurant-card oval-restaurant-card" role="group" aria-label="Restaurant: Shiv Guru Dhosa">
+                        <img src="IMAGES/Shiv Guru Dosa.png" alt="Shiv Guru Dhosa" class="oval-restaurant-image" />
+                        <div class="oval-restaurant-info">
+                            <div class="oval-restaurant-name">Shiv Guru Dhosa</div>
+                            <div class="oval-restaurant-rating" aria-label="4.3 stars" role="img">⭐️⭐️⭐️⭐️⭐️ 4.3</div>
+                        </div>
+                    
+                        <a href="New Biryani Plaza.html" class="restaurant-card oval-restaurant-card" role="group" aria-label="Restaurant: New BIryani Plaza">
+                            <img src="IMAGES/New Biriyani Plaza.jpeg" alt="One Bite" class="oval-restaurant-image" />
+                            <div class="oval-restaurant-info">
+                                <div class="oval-restaurant-name"> New BIryani Plaza</div>
+                                <div class="oval-restaurant-rating" aria-label="4.7 stars" role="img">⭐️⭐️⭐️⭐️⭐️ 4.7</div>
+                            </div>
+                        </a>
+                        <a href="New Indiana Resto.html" class="restaurant-card oval-restaurant-card" role="group" aria-label="Restaurant: New Indiana Restro">
+                            <img src="IMAGES/Indiana Hotal.jpeg" alt="Shiv Guru Dhosa" class="oval-restaurant-image" />
+                            <div class="oval-restaurant-info">
+                                <div class="oval-restaurant-name">New Indiana Restro</div>
+                                <div class="oval-restaurant-rating" aria-label="4.3 stars" role="img">⭐️⭐️⭐️⭐️⭐️ 4.3</div>
+                            </div>
+
+                    </a>
+                    <a href="Viraj Restaurant.html" class="restaurant-card oval-restaurant-card" role="group" aria-label="Viraj Restaurant">
+                        <img src="IMAGES/Viraaj.jpeg" alt="Dolden View" class="oval-restaurant-image" />
+                        <div class="oval-restaurant-info">
+                            <div class="oval-restaurant-name">Viraj Restaurant</div>
+                            <div class="oval-restaurant-rating" aria-label="4.6 stars" role="img">⭐️⭐️⭐️⭐️⭐️ 4.6</div>
+                        </div>
+                        </a>
+                        <a href="Chef's Jalsa.html" class="restaurant-card oval-restaurant-card" role="group" aria-label="Chef's Jalsa">
+                            <img src="IMAGES/Chef Jalsa.png" alt="Dolden View" class="oval-restaurant-image" />
+                            <div class="oval-restaurant-info">
+                                <div class="oval-restaurant-name">Chef's Jalsa</div>
+                                <div class="oval-restaurant-rating" aria-label="4.6 stars" role="img">⭐️⭐️⭐️⭐️⭐️ 4.6</div>
+                            </div>
+                            </a>
+                </div>
+                <div style="display: flex; gap: 20px;">
+            
+                    <a href="Mr.Choco.html" class="restaurant-card oval-restaurant-card" role="group" aria-label="Restaurant: Mr .Choco">
+                        <img src="IMAGES/Mr Choco.png" alt="Spice House" class="oval-restaurant-image" />
+                        <div class="oval-restaurant-info">
+                            <div class="oval-restaurant-name">Mr .Choco</div>
+                            <div class="oval-restaurant-rating" aria-label="4.4 stars" role="img">⭐️⭐️⭐️⭐️⭐️ 4.4</div>
+                        </div>
+                    </a>
+                    <a href="Shiv Vatika.html" class="restaurant-card oval-restaurant-card" role="group" aria-label="Restaurant: Shiv vatika">
+                        <img src="IMAGES/Shiv Vatika.jpeg" alt="Sweet Treats" class="oval-restaurant-image" />
+                        <div class="oval-restaurant-info">
+                            <div class="oval-restaurant-name">Shiv vatika</div>
+                            <div class="oval-restaurant-rating" aria-label="4.8 stars" role="img">⭐️⭐️⭐️⭐️⭐️ 4.8</div>
+                        </div>
+                    </a>
+                    <a href="Food Bus Of Jharkhand.html" class="restaurant-card oval-restaurant-card" role="group" aria-label="Food Bus Of Jharkhand">
+                        <img src="IMAGES/Food Bus Of Jharkhand.jpeg" alt="Dolden View" class="oval-restaurant-image" />
+                        <div class="oval-restaurant-info">
+                            <div class="oval-restaurant-name"> Food Bus Of Jharkhand</div>
+                            <div class="oval-restaurant-rating" aria-label="4.6 stars" role="img">⭐️⭐️⭐️⭐️⭐️ 4.6</div>
+
+                        </div>
+                        </a>
+                        <a href="Pizza City.html" class="restaurant-card oval-restaurant-card" role="group" aria-label="Pizza City">
+                            <img src="IMAGES/Pizza City.png" alt="Dolden View" class="oval-restaurant-image" />
+                            <div class="oval-restaurant-info">
+                                <div class="oval-restaurant-name">Pizza city</div>
+                                <div class="oval-restaurant-rating" aria-label="4.6 stars" role="img">⭐️⭐️⭐️⭐️⭐️ 4.6</div>
+                            </div>
+                            </a>
+                            <a href="Shubhraj.html" class="restaurant-card oval-restaurant-card" role="group" aria-label="Shubhraj">
+                                <img src="IMAGES/Subhraj.jpeg" alt="Dolden View" class="oval-restaurant-image" />
+                                <div class="oval-restaurant-info">
+                                    <div class="oval-restaurant-name">Shubhraj</div>
+                                    <div class="oval-restaurant-rating" aria-label="4.6 stars" role="img">⭐️⭐️⭐️⭐️⭐️ 4.6</div>
+                                </div>
+                                </a>
+                                <a href="Grand Surya.html" class="restaurant-card oval-restaurant-card" role="group" aria-label="Grand Surya">
+                                    <img src="IMAGES/Grand Surya.jpeg" alt="Dolden View" class="oval-restaurant-image" />
+                                    <div class="oval-restaurant-info">
+                                        <div class="oval-restaurant-name">Grand Surya</div>
+                                        <div class="oval-restaurant-rating" aria-label="4.6 stars" role="img">⭐️⭐️⭐️⭐️⭐️ 4.6</div>
+                                    </div>
+                                    </a>
+                                    <a href="Jayaka Restaurant.html" class="restaurant-card oval-restaurant-card" role="group" aria-label="Jayka Restaurant">
+                                        <img src="IMAGES/Jayaka logo.png" alt="Dolden View" class="oval-restaurant-image" />
+                                        <div class="oval-restaurant-info">
+                                            <div class="oval-restaurant-name">Jayka Restaurant</div>
+                                            <div class="oval-restaurant-rating" aria-label="4.6 stars" role="img">⭐️⭐️⭐️⭐️⭐️ 4.6</div>
+                                        </div>
+                                        </a>
+                </div>
+                <div style="display: flex; gap: 20px;">
+                    <a href="Sasta Cafe.html" class="restaurant-card oval-restaurant-card" role="group" aria-label="Restaurant:Sasta Cafe">
+                        <img src="IMAGES/Sasta Cafe.png" alt="Ocean Breeze" class="oval-restaurant-image" />
+                        <div class="oval-restaurant-info">
+                            <div class="oval-restaurant-name">Sasta Cafe</div>
+                            <div class="oval-restaurant-rating" aria-label="4.7 stars" role="img">⭐️⭐️⭐️⭐️⭐️ 4.7</div>
+                        </div>
+                    </a>
+                    <a href="Anpurna Sweets.html" class="restaurant-card oval-restaurant-card" role="group" aria-label="Restaurant: Anpurna Sweets">
+                        <img src="IMAGES/Annpurna.jpeg" alt="Green Garden" class="oval-restaurant-image" />
+                        <div class="oval-restaurant-info">
+                            <div class="oval-restaurant-name">Anpurna Sweets</div>
+                            <div class="oval-restaurant-rating" aria-label="4.5 stars" role="img">⭐️⭐️⭐️⭐️⭐️ 4.5</div>
+                        </div>
+                    </a>
+                    <a href="Cake Club.html" class="restaurant-card oval-restaurant-card" role="group" aria-label="Restaurant: Cake Club">
+                        <img src="IMAGES/Cake Club.png" alt="Green Garden" class="oval-restaurant-image" />
+                        <div class="oval-restaurant-info">
+                            <div class="oval-restaurant-name">Cake Club</div>
+                            <div class="oval-restaurant-rating" aria-label="4.5 stars" role="img">⭐️⭐️⭐️⭐️⭐️ 4.5</div>
+                        </div>
+                    </a>
+                    <a href="Champaran.html" class="restaurant-card oval-restaurant-card" role="group" aria-label="Restaurant: Champaran">
+                        <img src="IMAGES/Champaran.png" alt="Green Garden" class="oval-restaurant-image" />
+                        <div class="oval-restaurant-info">
+                            <div class="oval-restaurant-name">Champaran</div>
+                            <div class="oval-restaurant-rating" aria-label="4.5 stars" role="img">⭐️⭐️⭐️⭐️⭐️ 4.5</div>
+                        </div>
+                    </a>
+                    <a href="Mezbaan.html" class="restaurant-card oval-restaurant-card" role="group" aria-label="Restaurant: Mezbaan">
+                        <img src="IMAGES/Mazbaaan.png" alt="BBQ Joint" class="oval-restaurant-image" />
+                        <div class="oval-restaurant-info">
+                            <div class="oval-restaurant-name">Mezbaan</div>
+                            <div class="oval-restaurant-rating" aria-label="4.2 stars" role="img">⭐️⭐️⭐️⭐️⭐️ 4.2</div>
+                        </div>
+                    </a>
+                    <a href="Shahi Rasoi Dhaba.html" class="restaurant-card oval-restaurant-card" role="group" aria-label="Shahi Rasoi Dhaba">
+                        <img src="IMAGES/Shahi.jpeg" alt="Dolden View" class="oval-restaurant-image" />
+                        <div class="oval-restaurant-info">
+                            <div class="oval-restaurant-name">Shahi Rasoi Dhaba</div>
+                            <div class="oval-restaurant-rating" aria-label="4.6 stars" role="img">⭐️⭐️⭐️⭐️⭐️ 4.6</div>
+                        </div>
+                        </a>
+                        <a href="Masala Junction.html" class="restaurant-card oval-restaurant-card" role="group" aria-label="Masala Junction ">
+                            <img src="IMAGES/Masal Junction.jpeg" alt="Dolden View" class="oval-restaurant-image" />
+                            <div class="oval-restaurant-info">
+                                <div class="oval-restaurant-name">Masala Junction</div>
+                                <div class="oval-restaurant-rating" aria-label="4.6 stars" role="img">⭐️⭐️⭐️⭐️⭐️ 4.6</div>
+                            </div>
+                            </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <style>
+        .oval-restaurant-card {
+            flex: 0 0 auto;
+            background: #ff6347;
+            border-radius: 50% / 60%;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            width: 160px;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s ease;
+            padding: 10px 0;
+        }
+
+        .oval-restaurant-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .oval-restaurant-image {
+            width: 120px;
+            height: 90px;
+            border-radius: 50% / 60%;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .oval-restaurant-info {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .oval-restaurant-name {
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .oval-restaurant-rating {
+            font-size: 0.9rem;
+            color: #f093fb;
+        }
+    </style>
+
+    <!-- Footer -->
+    <footer>
+        <p>© For more details, Follow us on Social Media Platforms.</p>
+        <div class="social-icons">
+            <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/yumm.yexpress?igsh=NTc4MTIwNjQ2YQ==" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="tel:9229964355" target="_blank"><i class="fas fa-phone-alt"></i></a>
+            <a href="https://wa.me/message/G3OECKFIDWUVP1" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="mailto:example@email.com" target="_blank"><i class="fas fa-envelope"></i></a>
+        </div>
+    </footer>
+    <script>
+        // Lazy loading for images
+        document.querySelectorAll('img').forEach(img => {
+            img.setAttribute('loading', 'lazy');
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

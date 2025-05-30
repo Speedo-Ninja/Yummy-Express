@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yummy Express - Wishlist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nosifer&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"> <!-- FontAwesome CDN -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(120deg, #f093fb, #f5576c);
+            color: white;
+            overflow-x: hidden;
+        }
+        header {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            text-align: center;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        header h1 {
+            font-family: 'Nosifer', cursive;
+            font-size: 6rem;
+            margin: 0;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 10px 20px;
+            position: sticky;
+            top: 80px;
+            z-index: 100;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 10px;
+            transition: background-color 0.3s ease;
+            position: relative;
+        }
+        nav a:hover {
+            background-color: #3498db;
+            border-radius: 5px;
+        }
+        nav a i {
+            margin-right: 8px;
+            background: linear-gradient(45deg, #ff6347, #f5576c, #f093fb);
+            -webkit-background-clip: text;
+            color: transparent;
+            transition: background 0.5s ease;
+        }
+
+        .user-options {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .user-options a {
+            font-size: 1.5rem;
+            color: white;
+            background-color: #333;
+            padding: 8px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+        .user-options a:hover {
+            background-color: #f5576c;
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .wishlist-container {
+            padding: 40px;
+            margin-top: 20px;
+        }
+        .wishlist-container h2 {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 20px;
+        }
+        .wishlist-item {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            opacity: 0;
+            animation: flash 1s forwards;
+        }
+        .wishlist-item button {
+            background-color: #f5576c;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .wishlist-item button:hover {
+            background-color: #e74c3c;
+        }
+
+        @keyframes flash {
+            0% {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        .social-icons {
+            margin-top: 20px;
+        }
+        .social-icons a {
+            color: white;
+            font-size: 2rem;
+            margin: 0 15px;
+            text-decoration: none;
+            transition: color 0.4s ease;
+        }
+        .social-icons a:hover {
+            color: #3498db;
+        }
+
+        .note-section {
+            background-color: #f5576c;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 1.2rem;
+            animation: slideIn 4s ease-in-out infinite;
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateX(100%);
+            }
+            50% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container" style="display: flex; align-items: center; justify-content: center; gap: 20px; padding: 10px;">
+            <img src="LOGO.png" alt="New Logo" class="logo-icon" style="width: 100px; height: 100px; border: 3px solid #f093fb; border-radius: 50%; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);">
+            <div style="text-align: left;">
+                <h1 style="font-family: 'Nosifer', cursive; font-size: 3rem; color: #f093fb; text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5); margin: 0;">
+                    Yummy <span style="color: #f5576c;">Express</span>
+                </h1>
+                <p style="font-size: 1.2rem; font-family: 'Poppins', sans-serif; color: #ffffff;">Your favorite meals, delivered fresh!</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation bar -->
+    <nav>
+        <a href="index.html"><i class="fas fa-home"></i>Home</a>
+        <a href="(05) Offer.html"><i class="fas fa-tag"></i>Offers</a>
+        <a href="(08) Help and Support.html"><i class="fas fa-question-circle"></i>Help</a>
+        <a href="(07) About Us.html"><i class="fas fa-info-circle"></i>About Us</a>
+
+        <div class="user-options">
+            <a href="(02) Favourite menu.html" title="Favorites"><i class="fas fa-heart"></i></a>
+            <a href="(03) Update Profile.html" title="Profile"><i class="fas fa-user"></i></a>
+            <a href="(04) Cart.html" title="Cart"><i class="fas fa-shopping-cart"></i></a>
+        </div>
+    </nav>
+
+    <div class="note-section">
+        Our service is temporarily closed. Please check back later!
+    </div>
+
+    <!-- Wishlist Section -->
+    <div class="wishlist-container">
+        <h2>Your Favorite Food Items</h2>
+
+        <div id="wishlist">
+            <!-- Wishlist items will appear here dynamically -->
+        </div>
+
+        <!-- Add Dishes with Buttons -->
+        <button onclick="addItemToWishlist('Pizza', 12.99)">Add Pizza ($12.99)</button>
+        <button onclick="addItemToWishlist('Burger', 9.99)">Add Burger ($9.99)</button>
+        <button onclick="addItemToWishlist('Pasta', 14.99)">Add Pasta ($14.99)</button>
+        <button onclick="addItemToWishlist('Sushi', 19.99)">Add Sushi ($19.99)</button>
+        <button onclick="addItemToWishlist('Salad', 7.99)">Add Salad ($7.99)</button>
+        <button onclick="addItemToWishlist('Steak', 24.99)">Add Steak ($24.99)</button>
+        <button onclick="addItemToWishlist('Ice Cream', 5.99)">Add Ice Cream ($5.99)</button>
+    </div>
+
+    <footer>
+        <p>© For more details , Follow us on Social Media Platform.</p>
+        <div class="social-icons">
+            <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/yumm.yexpress?igsh=NTc4MTIwNjQ2YQ==" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="9229964355" target="_blank"><i class="fas fa-phone-alt"></i></a>
+            <a href="https://wa.me/message/G3OECKFIDWUVP1" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="mailto:example@email.com" target="_blank"><i class="fas fa-envelope"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize wishlist from localStorage
+        let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+        // Function to add item to wishlist
+        function addItemToWishlist(itemName, price) {
+            // Check if item already exists in wishlist
+            if (!wishlist.find(item => item.name === itemName)) {
+                wishlist.push({ name: itemName, price: price });
+                localStorage.setItem('wishlist', JSON.stringify(wishlist));
+                displayWishlist();
+            } else {
+                alert('Item already in your wishlist!');
+            }
+        }
+
+        // Function to remove item from wishlist
+        function removeItemFromWishlist(itemName) {
+            wishlist = wishlist.filter(item => item.name !== itemName);
+            localStorage.setItem('wishlist', JSON.stringify(wishlist));
+            displayWishlist();
+        }
+
+        // Function to display wishlist items
+        function displayWishlist() {
+            const wishlistContainer = document.getElementById('wishlist');
+            wishlistContainer.innerHTML = ''; // Clear current list
+
+            wishlist.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('wishlist-item');
+                itemDiv.innerHTML = `
+                    <span>${item.name} - $${item.price.toFixed(2)}</span>
+                    <button onclick="removeItemFromWishlist('${item.name}')">Remove</button>
+                    <button onclick="orderItem('${item.name}')">Order Now</button>
+                `;
+                wishlistContainer.appendChild(itemDiv);
+            });
+        }
+
+        // Function to simulate ordering an item
+        function orderItem(itemName) {
+            alert(`You have ordered: ${itemName}`);
+        }
+
+        // Initially display the wishlist
+        displayWishlist();
+    </script>
+
+</body>
+</html>

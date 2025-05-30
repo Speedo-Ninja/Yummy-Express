@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yummy Express</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Yummy Express - Your favorite meals, delivered fresh! Explore a wide variety of dishes and restaurants.">
+  <meta name="keywords" content="food delivery, yummy express, meals, restaurants, online food order, fresh food">
+  <meta name="author" content="Rohan">
+  <meta name="robots" content="index, follow">
+
+  <!-- Favicon -->
+  <link rel="icon" href="LOGO.png" type="image/png">
+
+  <!-- Structured Data JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Yummy Express",
+    "image": "LOGO.png",
+    "description": "Your favorite meals, delivered fresh!",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "123 Food Street",
+      "addressLocality": "City",
+      "addressRegion": "State",
+      "postalCode": "12345",
+      "addressCountry": "Country"
+    },
+    "telephone": "+1234567890",
+    "url": "http://www.yummyexpress.com"
+  }
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Nosifer&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(45deg, #ff007f, #ff6f00, #00bcd4);
+      font-family: 'Poppins', sans-serif;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+
+    .logo-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 20px;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    .logo-container img.logo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .logo-container img.logo:hover {
+      transform: scale(1.1);
+    }
+
+    .brand-name h1 {
+      font-family: 'Nosifer', cursive;
+      font-size: 2.5rem;
+      margin: 20px 0;
+      letter-spacing: 3px;
+      text-shadow: 4px 4px 10px rgba(22, 21, 21, 0.8);
+      color: #121111d1;
+    }
+
+    .brand-name h1 span {
+      color: #000000;
+    }
+
+    .brand-name p {
+      font-size: 1.2rem;
+      font-weight: 300;
+      margin-top: 5px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    @property --deg {
+      syntax: "<angle>";
+      initial-value: 0deg;
+      inherits: true;
+    }
+
+    @property --p {
+      syntax: "<percentage>";
+      initial-value: 0%;
+      inherits: true;
+    }
+
+    @property --line-width {
+      syntax: "<length>";
+      initial-value: 1rem;
+      inherits: true;
+    }
+
+    .spinner {
+      --size: 10rem;
+      --color: #ffeb3b;
+      --color-2: #9c27b0;
+      --color-3: #03a9f4;
+      width: var(--size);
+      background: conic-gradient(
+        from var(--deg),
+        var(--color),
+        var(--color-2),
+        var(--color-3),
+        transparent var(--p)
+      );
+      mask: radial-gradient(
+        circle,
+        transparent calc(var(--size) / 2 - var(--line-width, 1rem)),
+        black calc(var(--size) / 2 - var(--line-width, 1rem))
+      );
+      filter: drop-shadow(1rem 0 2rem var(--color-3));
+      border-radius: 50%;
+      aspect-ratio: 1;
+      animation: rotate 1.2s ease infinite, line-width 2.6s ease infinite, color-change 1.5s ease infinite;
+      opacity: 0;
+      animation: fadeIn 2s ease-in-out 0.5s forwards, rotate 1.2s ease infinite, line-width 2.6s ease infinite, color-change 1.5s ease infinite;
+    }
+
+    @keyframes rotate {
+      from {
+        --p: 20%;
+      }
+      50% {
+        --p: 50%;
+      }
+      70% {
+        --p: 30%;
+      }
+      90% {
+        --p: 10%;
+      }
+      to {
+        --p: 20%;
+        --deg: -360deg;
+      }
+    }
+
+    @keyframes line-width {
+      from, 20%, 70%, to {
+        --line-width: 1rem;
+      }
+      50% {
+        --line-width: .1rem;
+      }
+    }
+
+    @keyframes color-change {
+      0% {
+        --color: #ffeb3b;
+        --color-2: #9c27b0;
+        --color-3: #03a9f4;
+      }
+      50% {
+        --color: #ff5722;
+        --color-2: #4caf50;
+        --color-3: #00bcd4;
+      }
+      100% {
+        --color: #ffeb3b;
+        --color-2: #9c27b0;
+        --color-3: #03a9f4;
+      }
+    }
+
+    .loading-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+      animation: fadeIn 2s ease-in-out 1s forwards;
+    }
+
+    .footer {
+      margin-bottom: 20px;
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.7);
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .logo-container img.logo {
+        width: 90px;
+        height: 90px;
+      }
+
+      .brand-name h1 {
+        font-size: 2rem;
+      }
+
+      .brand-name p {
+        font-size: 1rem;
+      }
+
+      .spinner {
+        --size: 6rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo-container img.logo {
+        width: 70px;
+        height: 70px;
+      }
+
+      .brand-name h1 {
+        font-size: 1.5rem;
+      }
+
+      .brand-name p {
+        font-size: 0.9rem;
+      }
+
+      .spinner {
+        --size: 5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="logo-container">
+    <img src="LOGO.png" alt="Yummy Express Logo" class="logo" loading="lazy"> 
+    <div class="brand-name">
+      <h1>
+        Yummy <span>Express</span>
+      </h1>
+      <p>Your favorite meals, delivered fresh!</p>
+    </div>
+  </div>
+
+  <div class="loading-container">
+    <div class="spinner"></div>
+  </div>
+
+  <div class="footer">
+    Under Maintenance
+  </div>
+
+  <script>
+    setTimeout(function() {
+      window.location.href = "Home.html";
+    }, 5000);
+  </script>
+  
+</body>
+</html>
