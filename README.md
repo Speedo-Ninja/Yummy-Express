@@ -7,6 +7,10 @@ Is a fully functional online food delivery website built using HTML, CSS, and Ja
 
 This project is designed to give users a modern and engaging food delivery experience with intuitive navigation and dynamic UI interactions.
 
+
+
+![Image](https://github.com/user-attachments/assets/659b7bd3-e73b-406c-8ca9-2d2ad155f674)
+
 🔥 Key Features
 🧾 Interactive Restaurant Pages: Multiple restaurant pages are linked and customized to showcase different food items and themes.
 
